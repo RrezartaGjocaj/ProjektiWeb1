@@ -1,15 +1,9 @@
-
-* {
-    margin: 0;
-    padding: 0;
+body {
+    background: url("foto1.jpg"); 
+    color: #4B2E2E;   
+    line-height: 1.6;
     box-sizing: border-box;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-body {
-    background-color: #FFF5E6; 
-    color: #4B2E2E; 
-    line-height: 1.6;
 }
 
 
@@ -43,7 +37,7 @@ header nav a:hover {
 
 
 h1 {
-    color: #B24700; 
+    color: #FF5722; 
     margin-bottom: 20px;
     text-align: center;
 }
