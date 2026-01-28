@@ -3,12 +3,12 @@ require_once "Database.php";
 
 
 class User {
-    private $conn;
+    private $connect;
     
 
     public function_conctruct() {
         $db = new Database();
-        $this->conn = $db->connect();
+        $this->connect = $db->connect();
 
     }
 
@@ -20,7 +20,7 @@ class User {
                 VALUES (:name, :email, :password, 'user')";
 
 
-        $stmt = $this->conn->prepare($sql);
+        $stmt = $this->connect->prepare($sql);
         return $stmt->excute([
             ':name'=> $name,
             ':email'=> $email,
@@ -29,7 +29,7 @@ class User {
  
         public function login($email , $password) {
             $sql = "SELECT * FROM users WHERE email = :email";
-            $stmt = $this->conn->prepare($sql);
+            $stmt = $this->connect->prepare($sql);
             $stmt->excute([':email'=> $email]);
 
             $user = $stmt-> fetch(PDO::FETCH_ASSOC);
