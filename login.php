@@ -11,9 +11,14 @@ if ($_POST) {
     }
 }
 ?>
+<body>
 
-<form method="POST">
+<form method="POST"  onsubmit="return validateLogin()">
     <input type="email" name="email" placeholder="Email" required>
     <input type="password" name="password" placeholder="Password" required>
     <button type="submit">Login</button>
 </form>
+
+ <script scr="javascript.js"></script>
+</body>
+
