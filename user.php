@@ -6,11 +6,10 @@ class User {
     private $connect;
     
 
-    public function_conctruct() {
-        $db = new Database();
-        $this->connect = $db->connect();
-
-    }
+   public function __construct() {
+    $db = new Database();
+    $this->connect = $db->connect();
+}
 
     public function register($name,$email,$password) {
         $password = password_hash($password, PASSWORD_DEAFAULT);
@@ -26,6 +25,8 @@ class User {
             ':email'=> $email,
             ':password'=> $password,
         ]);
+      }
+
  
         public function login($email , $password) {
             $sql = "SELECT * FROM users WHERE email = :email";
@@ -52,4 +53,3 @@ class User {
             session_destroy();
         }
     }
-}
