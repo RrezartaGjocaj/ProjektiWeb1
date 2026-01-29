@@ -2,7 +2,7 @@
 
 class Database {
    private $host = "localhost";
-   private $db = "projektweb";
+   private $db = "ProjektiWeb1";
    private $user = "root";
    private $pass = "";
 
