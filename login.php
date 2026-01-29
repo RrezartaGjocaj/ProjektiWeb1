@@ -11,6 +11,7 @@ if ($_POST) {
     }
 }
 ?>
+<html>
 <body>
 
 <form method="POST"  onsubmit="return validateLogin()">
@@ -21,4 +22,5 @@ if ($_POST) {
 
  <script scr="javascript.js"></script>
 </body>
+</html>
 
