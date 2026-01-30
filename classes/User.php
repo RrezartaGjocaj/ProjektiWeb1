@@ -3,35 +3,27 @@ require_once "Database.php";
 
 
 class User {
-    private $connect;
+    private $conn;
     
 
    public function __construct() {
     $db = new Database();
-    $this->connect = $db->connect();
+    $this->conn = $db->connect();
 }
+    //CREATE
 
-    public function register($name,$email,$password) {
-        $password = password_hash($password, PASSWORD_DEAFAULT);
+    public function register($name, $email, $password) {
+        $sql = "INSERT INTO users (name, email, password) VALUES (?, ?, ?)";
+        $stmt = $this->conn->prepare($sql);
+        return $stmt->execute([$name, $email, $password]);
+    }
 
-
-        $sql = "INSERT INTO users (name, email, password, role)
-                VALUES (:name, :email, :password, 'user')";
-
-
-        $stmt = $this->connect->prepare($sql);
-        return $stmt->excute([
-            ':name'=> $name,
-            ':email'=> $email,
-            ':password'=> $password,
-        ]);
-      }
 
  
         public function login($email , $password) {
             $sql = "SELECT * FROM users WHERE email = :email";
             $stmt = $this->connect->prepare($sql);
-            $stmt->excute([':email'=> $email]);
+            $stmt->execute([':email'=> $email]);
 
             $user = $stmt-> fetch(PDO::FETCH_ASSOC);
 
@@ -52,4 +44,13 @@ class User {
             session_start();
             session_destroy();
         }
-    }
+
+        
+
+
+}
+
+
+        
+
+    
