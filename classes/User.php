@@ -68,6 +68,14 @@ class User {
     return $stmt->execute([$id]);
     }
     
+    //SOFT DELETE
+    public function softDelete($id) {
+    $sql = "UPDATE users SET is_deleted = 1 WHERE id = :id";
+    $stmt = $this->conn->prepare($sql);
+    return $stmt->execute([':id' => $id]);
+   }
+
+    
         public function isAdmin(){
             return isset($_SESSION['role']) && $_SESSION['role'] === 'admin';
         }
