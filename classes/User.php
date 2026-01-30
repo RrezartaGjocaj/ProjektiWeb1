@@ -60,6 +60,13 @@ class User {
         $stmt = $this->conn->prepare($sql);
         return $stmt->execute([$name, $email, $id]);
     }
+
+    //DELETE
+    public function deleteUser($id) {
+    $sql = "DELETE FROM users WHERE id = ?";
+    $stmt = $this->conn->prepare($sql);
+    return $stmt->execute([$id]);
+    }
     
         public function isAdmin(){
             return isset($_SESSION['role']) && $_SESSION['role'] === 'admin';
