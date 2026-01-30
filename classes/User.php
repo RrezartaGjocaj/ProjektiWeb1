@@ -24,7 +24,9 @@ class User {
 
  
     public function login($email, $password) {
-    $sql = "SELECT * FROM users WHERE email = :email";
+        $sql = "SELECT * FROM users 
+            WHERE email = :email AND is_deleted = 0";
+
     $stmt = $this->conn->prepare($sql);
     $stmt->execute(['email' => $email]);
 
