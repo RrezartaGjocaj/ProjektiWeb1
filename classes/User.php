@@ -22,7 +22,7 @@ class User {
  
         public function login($email , $password) {
             $sql = "SELECT * FROM users WHERE email = :email";
-            $stmt = $this->connect->prepare($sql);
+            $stmt = $this->conn->prepare($sql);
             $stmt->execute([':email'=> $email]);
 
             $user = $stmt-> fetch(PDO::FETCH_ASSOC);
