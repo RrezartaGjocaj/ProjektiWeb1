@@ -76,6 +76,17 @@ class User {
     $stmt = $this->conn->prepare($sql);
     return $stmt->execute([':id' => $id]);
    }
+   
+   //SEARCH/FILTER
+   public function searchUsers($keyword){
+    $sql = "SELECT * FROM users 
+            WHERE (name LIKE :kw OR email LIKE :kw)
+            AND is_deleted = 0"; 
+    $stmt = $this->conn->prepare($sql);
+    $stmt->execute([':kw' => '%'.$keyword.'%']);
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+  }
+
 
     
         public function isAdmin(){
@@ -86,9 +97,6 @@ class User {
             session_start();
             session_destroy();
         }
-
-        
-
 
 }
 
