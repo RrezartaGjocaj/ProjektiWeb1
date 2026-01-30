@@ -41,7 +41,7 @@ class User {
 
 
         //READ
-        public function getAllUsers() {
+        public function getUsers() {
         $sql = "SELECT * FROM users";
         $stmt = $this->conn->query($sql);
        return $stmt->fetchAll(PDO::FETCH_ASSOC);
