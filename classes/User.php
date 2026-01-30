@@ -37,7 +37,7 @@ class User {
         return true;
     }
     return false;
-}
+   }
 
 
         //READ
@@ -45,8 +45,22 @@ class User {
         $sql = "SELECT * FROM users";
         $stmt = $this->conn->query($sql);
        return $stmt->fetchAll(PDO::FETCH_ASSOC);
-}
+      }
 
+      //UPDATE
+      public function getUserById($id) {
+        $sql = "SELECT * FROM users WHERE id = ?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([$id]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+    
+    public function updateUser($id, $name, $email) {
+        $sql = "UPDATE users SET name = ?, email = ? WHERE id = ?";
+        $stmt = $this->conn->prepare($sql);
+        return $stmt->execute([$name, $email, $id]);
+    }
+    
         public function isAdmin(){
             return isset($_SESSION['role']) && $_SESSION['role'] === 'admin';
         }
