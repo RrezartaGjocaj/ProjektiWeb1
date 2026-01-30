@@ -5,7 +5,7 @@ $user = new User();
 
 if ($_POST) {
     $user->register($_POST['name'], $_POST['email'], $_POST['password']);
-    header("Location: login.php");
+   header("Location: login.php");
 }
 ?>
 <html>
